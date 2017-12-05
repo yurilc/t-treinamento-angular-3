@@ -1,4 +1,21 @@
-label {
+.field-label {
     width: 130px;
     display: inline-block;
+}
+
+.field-div {
+    /*margin: cima direita baixo esqurda;*/
+    margin: 3px 0 3px 0;
+}
+
+.checkbox {
+    display: block;
+}
+
+.field-input {
+    width: 300px;
+}
+
+input, textarea, select {
+    background-color: lightcyan;
 }
