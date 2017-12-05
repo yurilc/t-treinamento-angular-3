@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Receita</title>
+    </head>
+    <body>
+        <style>
+            img {
+                width: 100px;
+                height: 100px;
+                border-radius: 30px;
+            }
+
+            h3 {
+                color: green;
+            }
+
+            ul>li {
+                color: red;
+            }
+
+            ul>li:first-child {
+                text-transform: uppercase;
+            }
+
+            ul>li:nth-child(2) {
+                color: yellow;
+            }
+
+            #manteiga {
+                padding-left: 15px; 
+            }
+
+            .item {
+                margin-left: 15px;
+            }
+
+            #manteiga.item {
+                background-color: blue;
+            }
+
+            .negrito {
+                color: black;
+            }
+        </style>
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSop9U6oIw-aM2qd7KiLLrmAAgMC15BCQY1qFlDp5P_qfHUubR0UZY0w8Xc">
+        <h2>Receita de brigadeiro</h2>
+        <h3>Ingredientes</h3>
+        <ul>
+            <li>Chocolate</li>
+            <li>Leite condençado</li>
+            <li id="manteiga" class="item">Manteiga</li>
+            <li class="item negrito">Sal</li>
+        </ul>
+        <h3>Preparação</h3>
+        <ol>
+            <li class="item">Jogar tudo na panela</li>
+            <li class="item">Mexer até dar o ponto</li>
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cadastro</title>
+
+        <link rel="stylesheet" href="form.css">
+
+        <script src="form.js"></script>
+    </head>
+    <body>
+        <style>
+            form {
+                margin: 30px;
+            }
+        </style>
+
+        <form style="margin: 5px;" onsubmit="return validar()">
+            <div class="field-div">
+                <label for="nome" class="field-label">Nome</label>
+                <input type="input" name="nome" id="nome" class="field-input">
+            </div>
+            <div class="field-div">
+                <label for="sobrenome" class="field-label">Sobrenome</label>
+                <input type="text" name="sobrenome" id="sobrenome" class="field-input">
+            </div>
+            <div class="field-div">
+                <label class="field-label">Sexo</label>
+                <label>
+                    <input type="radio" name="sexo" id="sexo_m" value="M">
+                    Masculino
+                </label>
+                <label>
+                    <input type="radio" name="sexo" id="sexo_f" value="F">
+                    Feminino
+                </label>
+            </div>
+            <div class="field-div">
+                <label for="email" class="field-label">E-mail</label>
+                <input type="email" name="email" id="email" class="field-input">
+            </div>
+            <div class="field-div">
+                <label for="senha" class="field-label">Senha</label>
+                <input type="password" name="senha" id="senha" class="field-input">
+            </div>
+            <div class="field-div">
+                <label for="conf_senha" class="field-label">Confirmação</label>
+                <input type="password" name="conf_senha" id="conf_senha" class="field-input">
+            </div>
+            <div class="field-div">
+                <label for="sobre" class="field-label">Sobre</label>
+                <textarea name="sobre" id="sobre" class="field-input"></textarea>
+            </div>
+            <div class="field-div">
+                <label for="data_nascimento" class="field-label">Data Nascimento</label>
+                <input type="date" name="data_nascimento" id="data_nascimento">
+            </div>
+            <div class="field-div">
+                <label class="field-label">Hobies</label>
+                <label class="checkbox">
+                    <input type="checkbox" name="hobie" id="hobie_1" value="nat">
+                    Natação
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" name="hobie" id="hobie_2" value="jud">
+                    Judo
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" name="hobie" id="hobie_3" value="bas">
+                    Basquete
+                </label>
+            </div>
+            <div class="field-div">
+                <label for="musica" class="field-label">Música</label>
+                <select name="musica" id="musica" class="field-input">
+                    <option value="">-- Escolha --</option>
+                    <option value="1">Forró</option>
+                    <option value="2">Sertanejo</option>
+                    <option value="3">Rock</option>
+                </select>
+            </div>
+
+            <h3>Contatos</h3>
+
+            <button type="button" onclick="addContato()">Adicionar</button>
+
+            <div id="contatos"></div>
+            
+            <button type="submit">Salvar</button>
+        </form>
+    </body>
+</html>
