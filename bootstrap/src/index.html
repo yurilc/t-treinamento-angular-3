@@ -8,11 +8,11 @@
 <body>
     <nav class="navbar navbar-inverse">
         <div class="navbar-header">
-            <a href="#" class="navbar-brand">Blog</a>
+            <a href="#" class="navbar-brand" onclick="carregaPost()">Blog</a>
         </div>
 
         <ul class="nav navbar-nav">
-            <li><a href="formulario.html">Cadastre-se</a></li>
+            <li><a href="#" onclick="carregaFormulario()">Cadastre-se</a></li>
             <li><a href="sobre.html">Sobre</a></li>
         </ul>
     </nav>
@@ -22,29 +22,8 @@
         <p>Blog mais legal de todos =D</p>
     </div>
     
-    <div class="col-sm-7 col-md-9">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3>Meu primeiro post</h3>
-            </div>
-            <div class="panel-body">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer congue urna in risus sagittis, quis faucibus urna feugiat. Curabitur at orci turpis. Cras tempor sem vel dolor condimentum condimentum. Maecenas euismod vel metus sed aliquet. Aliquam consectetur eros ex, a interdum orci mattis eleifend. Integer pretium augue felis, vel euismod velit pharetra sit amet. Maecenas vel ullamcorper tellus. Pellentesque tincidunt commodo hendrerit. Aliquam eu egestas nisi, quis varius nisi. Aenean sed libero cursus, imperdiet lectus eu, suscipit elit.
-                </p>
-
-                <img class="center-block" src="http://www.freeiconspng.com/uploads/poker-face-png-11.png">
-                
-                <p>
-                    Fusce tristique ullamcorper purus ac ornare. Mauris a cursus odio, a condimentum neque. Vivamus cursus id nunc vitae porttitor. Etiam felis magna, bibendum nec feugiat eget, auctor eu turpis. Quisque sed felis quis diam vestibulum scelerisque. Fusce sollicitudin ultrices odio ut aliquet. Sed elementum nisi ac ex rutrum efficitur. Aenean fermentum nibh nunc, vel auctor ligula sollicitudin non. Curabitur facilisis eu neque sed sodales. Sed dictum quam quis sollicitudin gravida. Sed at tincidunt lacus.
-                </p>
-                <p>
-                    In condimentum enim in lorem semper, id dapibus augue maximus. Nullam auctor, elit vel malesuada ornare, elit ipsum hendrerit orci, sit amet ultrices eros mauris sit amet velit. Quisque ultricies lectus in iaculis vulputate. Morbi eget efficitur ante. Integer vel nisi arcu. Curabitur non nulla eu nulla auctor ornare id sed nisi. Sed imperdiet lorem vitae sapien accumsan ultrices. Curabitur facilisis suscipit maximus. Morbi sem odio, rhoncus quis suscipit nec, laoreet id nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus volutpat dapibus gravida.
-                </p>
-            </div>
-            <div class="panel-footer">
-                <p class="text-right">10/10/2017 por <strong>Admin</strong></p>
-            </div>
-        </div>
+    <div id="conteudo" class="col-sm-7 col-md-9">
+        
     </div>
 
     <div class="col-sm-5 col-md-3">
@@ -83,5 +62,11 @@
 
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="index.js"></script>
+
+    <script>
+        carregaPost();
+    </script>
 </body>
 </html>
