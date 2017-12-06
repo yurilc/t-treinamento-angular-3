@@ -1,1 +1,101 @@
-formulário
+<form>
+    <div class="form-group col-sm-6">
+        <label for="nome" class="control-label">Nome</label>
+        <input type="text" id="nome" name="nome" class="form-control">
+    </div>
+    <div class="form-group col-sm-6">
+        <label for="sobrenome" class="control-label">Sobrenome</label>
+        <input type="text" id="sobrenome" name="sobrenome" class="form-control">
+    </div>
+    <div class="form-group col-sm-4">
+        <label class="control-label">Sexo</label>
+        <div>
+            <label class="radio-inline">
+                <input type="radio" name="sexo" id="sexo_m" value="M">
+                Masculino
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="sexo" id="sexo_f" value="F">
+                Feminino
+            </label>
+        </div>
+    </div>
+    <div class="form-group col-sm-8">
+        <label for="email" class="control-label">E-mail</label>
+        <input type="email" id="email" name="email" class="form-control">
+    </div>
+    <div class="row col-sm-12">
+        <div class="form-group col-sm-4">
+            <label for="senha" class="control-label">Senha</label>
+            <input type="password" id="senha" name="senha" class="form-control">
+        </div>
+    </div>
+    <div class="row col-sm-12">
+        <div class="form-group col-sm-4">
+            <label for="conf_senha" class="control-label">Confirmação</label>
+            <input type="password" id="conf_senha" name="conf_senha" class="form-control">
+        </div>
+    </div>
+    <div class="form-group col-sm-12">
+        <label for="sobre" class="control-label">Sobre</label>
+        <textarea name="sobre" id="sobre" class="form-control" rows="6"></textarea>
+    </div>
+    <div class="row col-sm-12">
+        <div class="form-group col-sm-3">
+            <label for="data_nascimento" class="control-label">Data Nascimento</label>
+            <input type="date" id="data_nascimento" name="data_nascimento" class="form-control">
+        </div>
+        <div class="form-group col-sm-3">
+            <label class="control-label">Hobies</label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="hobie" id="hobie_1" value="nat">
+                    Natação
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="hobie" id="hobie_2" value="jud">
+                    Judo
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="hobie" id="hobie_3" value="bas">
+                    Basquete
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="musica" class="control-label">Música</label>
+            <select name="musica" id="musica" class="form-control">
+                <option value="">-- Selecione --</option>
+                <option value="1">Forró</option>
+                <option value="2">Sertanejo</option>
+                <option value="3">Rock</option>
+            </select>
+        </div>
+    </div>
+    <div class="text-right">
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-remove"></span>
+            Cancelar
+        </button>
+        <button type="submit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-ok"></span>
+            Salvar
+        </button>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
