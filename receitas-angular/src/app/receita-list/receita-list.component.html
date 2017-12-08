@@ -1,11 +1,15 @@
 <h2>Receitas</h2>
 
-<div>
-  <div class="col-sm-3"
+<div class="col-sm-8">
+  <div class="col-sm-6"
     *ngFor="let item of receitas">
     <app-receita-resumo
       [titulo]="item.titulo"
       desc="{{item.descricao}}"
       estilo="success"></app-receita-resumo>
   </div>
+</div>
+
+<div class="col-sm-4">
+  <app-receita-form></app-receita-form>
 </div>
