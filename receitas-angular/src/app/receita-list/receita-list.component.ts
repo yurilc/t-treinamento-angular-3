@@ -24,4 +24,17 @@ export class ReceitaListComponent implements OnInit {
   ngOnInit() {
   }
 
+  onAddReceita(receita: any) {
+    console.log(receita);
+  }
+
 }
+
+
+
+
+
+
+
+
+
