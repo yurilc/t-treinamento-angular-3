@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Receita } from '../receita';
+
 @Component({
   selector: 'app-receita-list',
   templateUrl: './receita-list.component.html',
@@ -7,16 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReceitaListComponent implements OnInit {
 
-  receitas = [
-    { titulo: 'Titulo 1', descricao: 'Descrição 1' },
-    { titulo: 'Titulo da Receita', descricao: 'Descrição da receita' },
-    { titulo: 'Novo titulo', descricao: 'Descrição Nova' },
-    { titulo: 'Titulo da Receita', descricao: 'Descrição ADS123' },
-    { titulo: 'Titulo da Receita', descricao: 'Descrição da receita' },
-    { titulo: 'Titulo da Receita', descricao: 'Descrição da receita' },
-    { titulo: 'Titulo da Receita', descricao: 'Descrição da receita' },
-    { titulo: 'Titulo da Receita', descricao: 'Descrição da receita' },
-    { titulo: 'Titulo da Receita', descricao: 'Descrição da receita' }
+  receitas: Receita[] = [
+    { titulo: 'Titulo 1', descricao: 'Descrição 1' }
   ];
 
   constructor() { }
@@ -24,8 +18,9 @@ export class ReceitaListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onAddReceita(receita: any) {
+  onAddReceita(receita: Receita) {
     console.log(receita);
+     this.receitas.push(receita);
   }
 
 }
