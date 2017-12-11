@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-receita-resumo',
@@ -12,4 +12,28 @@ export class ReceitaResumoComponent {
     descricao = "Descrição da receita ABC123";
     @Input("estilo")
     estilo = "default";
+    @Input()
+    index: number;
+
+    @Output()
+    editReceita = new EventEmitter<number>();
+    @Output()
+    removeReceita = new EventEmitter<number>();
+
+    onEditReceita() {
+        this.editReceita.emit(this.index);
+    }
+
+    onRemoveReceita() {
+        this.removeReceita.emit(this.index);
+    }
+
 }
+
+
+
+
+
+
+
+
