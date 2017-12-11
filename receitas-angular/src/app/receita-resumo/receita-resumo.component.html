@@ -1,6 +1,21 @@
 <div class="panel panel-{{ estilo }}">
     <div class="panel-heading">
-        <h3>{{ titulo }}</h3>
+        <h3>{{ titulo }}
+            <button
+                type="button"
+                class="btn btn-default pull-right"
+                (click)="onEditReceita()">
+                <span
+                    class="glyphicon glyphicon-pencil"></span>
+            </button>
+            <button
+                type="button"
+                class="btn btn-danger pull-right"
+                (click)="onRemoveReceita()">
+            <span
+                class="glyphicon glyphicon-trash"></span>
+        </button>
+        </h3>
     </div>
 
     <div class="panel-body">
