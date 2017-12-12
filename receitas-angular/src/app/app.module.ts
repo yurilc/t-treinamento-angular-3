@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ReceitaResumoComponent } from './receita-resumo/receita-resumo.component';
 import { ReceitaListComponent } from './receita-list/receita-list.component';
 import { ReceitaFormComponent } from './receita-form/receita-form.component';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReceitaResumoComponent,
     ReceitaListComponent,
-    ReceitaFormComponent
+    ReceitaFormComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
