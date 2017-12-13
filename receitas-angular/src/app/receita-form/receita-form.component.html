@@ -2,7 +2,8 @@
   #f="ngForm"
   class="form-horizontal" 
   (ngSubmit)="onAddReceita(f)">
-  <div class="form-group">
+  <div class="form-group col-sm-12"
+    [ngClass]="{ 'has-error': titulo.invalid, 'has-success': titulo.valid }">
     <label class="control-label col-sm-3">Título</label>
     <div class="col-sm-9">
       <input
@@ -11,10 +12,15 @@
         name="titulo"
         ngModel
         #titulo="ngModel"
-        required>
+        required
+        maxlength="10">
+        <div *ngIf="titulo.invalid"
+          class="help-block">
+          <div>O campo é obrigatório!</div>
+        </div>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group col-sm-12">
     <label class="control-label col-sm-3">Descrição</label>
     <div class="col-sm-9">
       <textarea
@@ -22,7 +28,9 @@
         rows="6"
         name="descricao"
         ngModel
-        #descricao="ngModel"></textarea>
+        #descricao="ngModel"
+        required
+        minlength="3"></textarea>
     </div>
   </div>
   <div class="text-right">
