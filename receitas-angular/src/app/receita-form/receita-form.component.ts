@@ -17,8 +17,8 @@ import { ReceitaService } from '../receita.service';
 export class ReceitaFormComponent implements OnInit, OnDestroy {
   // nome_da_variavel: tipo = valor;
   // nome_da_variavel = valor;
-  titulo: string;
-  descricao: string;
+  //titulo: string;
+  //descricao: string;
 
   @Input()
   index: number;
@@ -29,8 +29,8 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
     if(this.index > -1) {
       const receita =
         this.receitaService.getReceita(this.index);
-        this.titulo = receita.titulo;
-        this.descricao = receita.descricao;
+        //this.titulo = receita.titulo;
+        //this.descricao = receita.descricao;
     }
   }
 
