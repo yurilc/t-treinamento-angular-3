@@ -1,9 +1,7 @@
 export class Receita {
-    titulo: string;
-    descricao: string;
-
-    constructor(titulo: string, descricao: string) {
-        this.titulo = titulo;
-        this.descricao = descricao;
-    }
+    constructor(
+        public titulo: string,
+        public descricao: string,
+        public dificuldade: string
+    ) {}
 }
