@@ -1,6 +1,6 @@
 import {
   Component, OnInit, Output,
-  EventEmitter,
+  EventEmitter, ViewChild,
   Input, OnDestroy
 } from '@angular/core';
 
@@ -19,6 +19,16 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
   // nome_da_variavel = valor;
   //titulo: string;
   //descricao: string;
+  dificuldades = [
+    { value: '1', label: 'Fácil'},
+    { value: '2', label: 'Médio'},
+    { value: '3', label: 'Difícil'}
+  ];
+
+  @ViewChild("f")
+  form: NgForm;
+
+  receita: Receita = new Receita(null, null, null);
 
   @Input()
   index: number;
@@ -27,7 +37,7 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if(this.index > -1) {
-      const receita =
+      this.receita =
         this.receitaService.getReceita(this.index);
         //this.titulo = receita.titulo;
         //this.descricao = receita.descricao;
@@ -42,11 +52,6 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
     console.log(form);
     const receita = form.value;
     console.log(receita);
-    /*
-    const receita = new Receita(
-      this.titulo,
-      this.descricao
-    );
 
     if(this.index == -1) {
       //this.addReceita.emit(receita);
@@ -57,6 +62,5 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
         this.index, receita
       );
     }
-    */
   }
 }
