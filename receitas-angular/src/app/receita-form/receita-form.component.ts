@@ -4,6 +4,8 @@ import {
   Input, OnDestroy
 } from '@angular/core';
 
+import { NgForm } from '@angular/forms';
+
 import { Receita } from '../receita';
 import { ReceitaService } from '../receita.service';
 
@@ -36,10 +38,11 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
     console.log("ngOnDestroy");
   }
 
-  onAddReceita() {
-    console.log("titulo", this.titulo);
-    console.log("descricao", this.descricao);
-    
+  onAddReceita(form: NgForm) {
+    console.log(form);
+    const receita = form.value;
+    console.log(receita);
+    /*
     const receita = new Receita(
       this.titulo,
       this.descricao
@@ -54,5 +57,6 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
         this.index, receita
       );
     }
+    */
   }
 }
