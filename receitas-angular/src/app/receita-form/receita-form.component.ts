@@ -1,46 +1,34 @@
 import {
   Component, OnInit, Output,
   EventEmitter,
-  Input, OnChanges
+  Input, OnDestroy
 } from '@angular/core';
 
 import { Receita } from '../receita';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { ReceitaService } from '../receita.service';
 
 @Component({
   selector: 'app-receita-form',
   templateUrl: './receita-form.component.html',
   styleUrls: ['./receita-form.component.css']
 })
-export class ReceitaFormComponent implements OnInit, OnChanges, OnDestroy {
+export class ReceitaFormComponent implements OnInit, OnDestroy {
   // nome_da_variavel: tipo = valor;
   // nome_da_variavel = valor;
   titulo: string;
   descricao: string;
 
   @Input()
-  receita: Receita;
-  @Input()
   index: number;
 
-  @Output()
-  addReceita = new EventEmitter<Receita>();
-  @Output()
-  editReceita = new EventEmitter<Receita>();
-  @Output()
-  cancel = new EventEmitter<void>();
-
-  constructor() { }
+  constructor(private receitaService: ReceitaService) { }
 
   ngOnInit() {
-    console.log("ngOnInit");
-  }
-
-  ngOnChanges() {
-    console.log("ngOnChanges()");
-    if(this.receita) {
-      this.titulo = this.receita.titulo;
-      this.descricao = this.receita.descricao;
+    if(this.index > -1) {
+      const receita =
+        this.receitaService.getReceita(this.index);
+        this.titulo = receita.titulo;
+        this.descricao = receita.descricao;
     }
   }
 
@@ -58,26 +46,13 @@ export class ReceitaFormComponent implements OnInit, OnChanges, OnDestroy {
     );
 
     if(this.index == -1) {
-      this.addReceita.emit(receita);
+      //this.addReceita.emit(receita);
+      this.receitaService.addReceita(receita);
     } else {
-      this.editReceita.emit(receita);
+      //this.editReceita.emit(receita);
+      this.receitaService.updateReceita(
+        this.index, receita
+      );
     }
-
-    this.onCancel();
-  }
-
-  onCancel() {
-    this.titulo = '';
-    this.descricao = '';
-    this.cancel.emit();
   }
 }
-
-
-
-
-
-
-
-
-

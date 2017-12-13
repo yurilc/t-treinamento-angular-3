@@ -7,6 +7,8 @@ import { ReceitaResumoComponent } from './receita-resumo/receita-resumo.componen
 import { ReceitaListComponent } from './receita-list/receita-list.component';
 import { ReceitaFormComponent } from './receita-form/receita-form.component';
 import { HighlightDirective } from './highlight.directive';
+import { ClickDirective } from './click.directive';
+import { ReceitaService } from './receita.service';
 
 @NgModule({
   declarations: [
@@ -14,13 +16,16 @@ import { HighlightDirective } from './highlight.directive';
     ReceitaResumoComponent,
     ReceitaListComponent,
     ReceitaFormComponent,
-    HighlightDirective
+    HighlightDirective,
+    ClickDirective
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    ReceitaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
