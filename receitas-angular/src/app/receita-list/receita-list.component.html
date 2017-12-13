@@ -22,11 +22,7 @@
 
 <app-receita-form
   *ngIf="modo == 'new' || modo == 'edit'"
-  [index]="selectedIndex"
-  [receita]="receita"
-  (addReceita)="onAddReceita($event)"
-  (editReceita)="onConfirmEditReceita($event)"
-  (cancel)="onCancel()"></app-receita-form>
+  [index]="selectedIndex"></app-receita-form>
 
 
 
