@@ -11,6 +11,7 @@ import { ClickDirective } from './click.directive';
 import { ReceitaService } from './receita.service';
 import { ResumoPipe } from './resumo.pipe';
 import { DificuldadePipe } from './dificuldade.pipe';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DificuldadePipe } from './dificuldade.pipe';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [
     ReceitaService

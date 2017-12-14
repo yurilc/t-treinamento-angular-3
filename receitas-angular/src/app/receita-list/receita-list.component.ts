@@ -16,9 +16,7 @@ export class ReceitaListComponent implements OnInit, OnDestroy {
   receitasSubscription: Subscription;
 
   selectedIndex = -1;
-  modo = 'list';
   
-
   constructor(private receitaService: ReceitaService) { }
 
   ngOnInit() {
@@ -29,7 +27,6 @@ export class ReceitaListComponent implements OnInit, OnDestroy {
       (receitas: Receita[]) => {
         this.receitas = receitas;
         this.selectedIndex = -1;
-        this.modo = 'list';
       }
     );
   }
@@ -40,7 +37,6 @@ export class ReceitaListComponent implements OnInit, OnDestroy {
 
   onEditReceita(index: number) {
     this.selectedIndex = index;
-    this.modo = 'edit';
   }
 
   onRemoveReceita(index: number) {
@@ -49,16 +45,7 @@ export class ReceitaListComponent implements OnInit, OnDestroy {
   }
 
   onNew() {
-    this.modo = 'new';
+
   }
 
 }
-
-
-
-
-
-
-
-
-

@@ -27,8 +27,7 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
 
-  @Input()
-  index: number;
+  index: number = -1;
 
   constructor(private receitaService: ReceitaService) { }
 
