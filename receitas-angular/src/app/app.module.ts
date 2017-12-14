@@ -9,6 +9,8 @@ import { ReceitaFormComponent } from './receita-form/receita-form.component';
 import { HighlightDirective } from './highlight.directive';
 import { ClickDirective } from './click.directive';
 import { ReceitaService } from './receita.service';
+import { ResumoPipe } from './resumo.pipe';
+import { DificuldadePipe } from './dificuldade.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ReceitaService } from './receita.service';
     ReceitaListComponent,
     ReceitaFormComponent,
     HighlightDirective,
-    ClickDirective
+    ClickDirective,
+    ResumoPipe,
+    DificuldadePipe
   ],
   imports: [
     BrowserModule,

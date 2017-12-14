@@ -10,6 +10,8 @@ export class ReceitaResumoComponent {
     titulo = "Titulo da receita";
     @Input("desc")
     descricao = "Descrição da receita ABC123";
+    @Input()
+    dificuldade: string;
     @Input("estilo")
     estilo = "default";
     @Input()

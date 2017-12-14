@@ -2,7 +2,7 @@
     class="panel panel-{{ estilo }}"
     [appHighlight]="{ cor: 'red', tamanho: '2px' }">
     <div class="panel-heading" appClick>
-        <h3>{{ titulo }}
+        <h3>{{ titulo | uppercase }}
             <button
                 type="button"
                 class="btn btn-default pull-right"
@@ -21,6 +21,7 @@
     </div>
 
     <div class="panel-body">
-        <p>{{ descricao }}</p>
+        <p>{{ dificuldade | dificuldade }}</p>
+        <p>{{ descricao | resumo : 30 | uppercase }}</p>
     </div>
 </div>

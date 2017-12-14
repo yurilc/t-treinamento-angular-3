@@ -13,6 +13,7 @@
     <app-receita-resumo
       [titulo]="item.titulo"
       desc="{{item.descricao}}"
+      [dificuldade]="item.dificuldade"
       estilo="success"
       [index]="i"
       (editReceita)="onEditReceita($event)"
