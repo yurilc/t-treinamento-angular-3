@@ -6,7 +6,8 @@ import { ReceitaFormComponent } from './receita-form/receita-form.component';
 
 const routes: Routes = [
     { path: '', component: ReceitaListComponent },
-    { path: 'new', component: ReceitaFormComponent }
+    { path: 'new', component: ReceitaFormComponent },
+    { path: ':id/edit', component: ReceitaFormComponent }
 ];
 
 @NgModule({
