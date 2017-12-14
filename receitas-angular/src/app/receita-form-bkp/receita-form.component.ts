@@ -4,7 +4,7 @@ import {
   Input, OnDestroy
 } from '@angular/core';
 
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 import { Receita } from '../receita';
 import { ReceitaService } from '../receita.service';
@@ -25,7 +25,10 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
     { value: '3', label: 'Difícil'}
   ];
 
-  form: FormGroup;
+  @ViewChild("f")
+  form: NgForm;
+
+  receita: Receita = new Receita(null, null, null);
 
   @Input()
   index: number;
@@ -34,11 +37,10 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if(this.index > -1) {
-      const receita =
+      this.receita =
         this.receitaService.getReceita(this.index);
-        this.initializeForm(receita);
-    } else {
-      this.initializeForm();
+        //this.titulo = receita.titulo;
+        //this.descricao = receita.descricao;
     }
   }
 
@@ -46,9 +48,9 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
     console.log("ngOnDestroy");
   }
 
-  onAddReceita() {
-    console.log(this.form);
-    const receita = this.form.value;
+  onAddReceita(form: NgForm) {
+    console.log(form);
+    const receita = form.value;
     console.log(receita);
 
     if(this.index == -1) {
@@ -60,31 +62,5 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
         this.index, receita
       );
     }
-  }
-
-  private initializeForm(receita?: Receita){
-    let titulo = null;
-    let descricao = null;
-    let dificuldade = '';
-
-    if(receita) {
-      titulo = receita.titulo;
-      descricao = receita.descricao;
-      dificuldade = receita.dificuldade;
-    }
-
-    this.form = new FormGroup({
-      'titulo': new FormControl(titulo, [
-        Validators.required,
-        Validators.maxLength(10)
-      ]),
-      'descricao': new FormControl(descricao,[
-        Validators.required,
-        Validators.minLength(3)
-      ]),
-      'dificuldade': new FormControl(dificuldade,[
-        Validators.required
-      ])
-    });
   }
 }
