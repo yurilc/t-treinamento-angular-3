@@ -1,37 +1,20 @@
 <h2>Receitas</h2>
 
-<div *ngIf="modo == 'list'">
-  <div>
-    <button
-      appHighlight
-      type="button"
-      class="btn btn-primary"
-      (click)="onNew()">Nova Receita</button>
-  </div>
-  <div class="col-sm-6"
-    *ngFor="let item of receitas; let i = index">
-    <app-receita-resumo
-      [titulo]="item.titulo"
-      desc="{{item.descricao}}"
-      [dificuldade]="item.dificuldade"
-      estilo="success"
-      [index]="i"
-      (editReceita)="onEditReceita($event)"
-      (removeReceita)="onRemoveReceita($event)"></app-receita-resumo>
-  </div>
+<div>
+  <button
+    appHighlight
+    type="button"
+    class="btn btn-primary"
+    (click)="onNew()">Nova Receita</button>
 </div>
-
-<app-receita-form
-  *ngIf="modo == 'new' || modo == 'edit'"
-  [index]="selectedIndex"></app-receita-form>
-
-
-
-
-
-
-
-
-
-
-
+<div class="col-sm-6"
+  *ngFor="let item of receitas; let i = index">
+  <app-receita-resumo
+    [titulo]="item.titulo"
+    desc="{{item.descricao}}"
+    [dificuldade]="item.dificuldade"
+    estilo="success"
+    [index]="i"
+    (editReceita)="onEditReceita($event)"
+    (removeReceita)="onRemoveReceita($event)"></app-receita-resumo>
+</div>
