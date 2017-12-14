@@ -28,7 +28,7 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
   @ViewChild("f")
   form: NgForm;
 
-  receita: Receita = new Receita(null, null, null);
+  receita: Receita = new Receita(null, null, null, null);
 
   @Input()
   index: number;

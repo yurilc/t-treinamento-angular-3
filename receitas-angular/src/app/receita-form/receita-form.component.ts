@@ -4,7 +4,7 @@ import {
   Input, OnDestroy
 } from '@angular/core';
 
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 import { Receita } from '../receita';
 import { ReceitaService } from '../receita.service';
@@ -47,7 +47,7 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
   }
 
   onAddReceita() {
-    console.log(this.form);
+    console.log(this.form.value);
     const receita = this.form.value;
     console.log(receita);
 
@@ -66,11 +66,22 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
     let titulo = null;
     let descricao = null;
     let dificuldade = '';
+    let ingredientes = [];
 
     if(receita) {
       titulo = receita.titulo;
       descricao = receita.descricao;
       dificuldade = receita.dificuldade;
+      if(receita.ingredientes.length > 0) {
+        for(let i = 0; i < receita.ingredientes.length; i++) {
+          ingredientes.push(
+            new FormControl(
+              receita.ingredientes[i],
+              [ Validators.required ]
+            )
+          );
+        }
+      }
     }
 
     this.form = new FormGroup({
@@ -84,7 +95,22 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
       ]),
       'dificuldade': new FormControl(dificuldade,[
         Validators.required
-      ])
+      ]),
+      'ingredientes': new FormArray(ingredientes)
     });
   }
+
+  addIngrediente() {
+    (<FormArray>this.form.get('ingredientes'))
+      .push(new FormControl(null, [
+        Validators.required
+      ]));
+  }
+
+  removeIngrediente(index: number) {
+    (<FormArray>this.form.get('ingredientes'))
+      .removeAt(index);
+  }
 }
+
+
