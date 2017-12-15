@@ -29,6 +29,10 @@ export class ReceitaListComponent implements OnInit, OnDestroy {
     
   }
 
+  onDetailReceita(index: number){
+    this.router.navigate([ index ]);
+  }
+
   onEditReceita(index: number) {
     this.router.navigate([ index, 'edit' ]);
     // 123/edit

@@ -1,3 +1,16 @@
-<p>
-  receita-detail works!
-</p>
+<h3>Receita</h3>
+<p>Titulo: {{ receita.titulo }}</p>
+<p>Descrição: {{ receita.descricao }}</p>
+<p>Dificuldade: {{ receita.dificuldade | dificuldade }}</p>
+
+<h4>Ingredientes</h4>
+
+<ul *ngIf="receita.ingredientes.length > 0;else semIngredientes">
+  <li *ngFor="let ing of receita.ingredientes">
+    {{ ing }}
+  </li>
+</ul>
+
+<ng-template #semIngredientes>
+  <p>Não existem ingredientes para esta receita</p>
+</ng-template>

@@ -18,9 +18,15 @@ export class ReceitaResumoComponent {
     index: number;
 
     @Output()
+    detailReceita = new EventEmitter<number>();
+    @Output()
     editReceita = new EventEmitter<number>();
     @Output()
     removeReceita = new EventEmitter<number>();
+
+    onDetailReceita() {
+        this.detailReceita.emit(this.index);
+    }
 
     onEditReceita() {
         this.editReceita.emit(this.index);

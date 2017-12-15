@@ -15,6 +15,7 @@
     [dificuldade]="item.dificuldade"
     estilo="success"
     [index]="i"
+    (detailReceita)="onDetailReceita($event)"
     (editReceita)="onEditReceita($event)"
     (removeReceita)="onRemoveReceita($event)"></app-receita-resumo>
 </div>
