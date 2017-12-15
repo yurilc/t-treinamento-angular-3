@@ -1,3 +1,27 @@
-<p>
-  ingrediente-form works!
-</p>
+<h2>{{ index == -1 ? 'Novo' : 'Editar' }} Ingrediente</h2>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="form-group"
+    [ngClass]="{ 'has-error' : nome.invalid && nome.dirty, 'has-success' : nome.valid && nome.dirty }">
+    <label for="nome" class="control-label">Nome</label>
+    <input
+      type="text"
+      class="form-control"
+      name="nome"
+      [ngModel]="ingrediente.nome"
+      #nome="ngModel"
+      required>
+    <div class="help-block"
+      *ngIf="nome.invalid && nome.dirty">
+      <div>O campo é obrigatório</div>
+    </div>
+  </div>
+  <div>
+    <button
+      type="button"
+      class="btn btn-default"
+      (click)="onCancel()">Cancelar</button>
+    <button
+      type="submit"
+      class="btn btn-primary">Salvar</button>
+  </div>
+</form>
