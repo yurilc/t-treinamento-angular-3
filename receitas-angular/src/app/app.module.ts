@@ -14,6 +14,13 @@ import { DificuldadePipe } from './shared/dificuldade.pipe';
 import { AppRoutingModule } from './app-routing.module';
 import { ReceitaDetailComponent } from './receita/receita-detail/receita-detail.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { IngredienteListComponent } from './ingrediente/ingrediente-list/ingrediente-list.component';
+import { IngredienteFormComponent } from './ingrediente/ingrediente-form/ingrediente-form.component';
+import { IngredienteDetailComponent } from './ingrediente/ingrediente-detail/ingrediente-detail.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ResumoPipe,
     DificuldadePipe,
     ReceitaDetailComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    IngredienteListComponent,
+    IngredienteFormComponent,
+    IngredienteDetailComponent,
+    HomeComponent,
+    LoginComponent,
+    CadastroComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
