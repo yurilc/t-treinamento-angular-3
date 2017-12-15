@@ -13,6 +13,7 @@ import { ResumoPipe } from './shared/resumo.pipe';
 import { DificuldadePipe } from './shared/dificuldade.pipe';
 import { AppRoutingModule } from './app-routing.module';
 import { ReceitaDetailComponent } from './receita/receita-detail/receita-detail.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ReceitaDetailComponent } from './receita/receita-detail/receita-detail.
     ClickDirective,
     ResumoPipe,
     DificuldadePipe,
-    ReceitaDetailComponent
+    ReceitaDetailComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

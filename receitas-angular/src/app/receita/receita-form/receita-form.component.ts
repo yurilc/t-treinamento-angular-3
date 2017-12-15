@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { Location } from '@angular/common';
 
 import { Receita } from '../receita';
 import { ReceitaService } from '../../core/receita.service';
@@ -31,7 +32,8 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
 
   constructor(private receitaService: ReceitaService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private location: Location) { }
 
   ngOnInit() {
     if(this.route.snapshot.params['id']) {
@@ -58,13 +60,19 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
     if(this.index == -1) {
       //this.addReceita.emit(receita);
       this.receitaService.addReceita(receita);
-      this.router.navigate(['']);
+      const i = this.receitaService
+        .getReceitas().length - 1;
+      this.router.navigate([ '../', i ], {
+        relativeTo: this.route
+      });
     } else {
       //this.editReceita.emit(receita);
       this.receitaService.updateReceita(
         this.index, receita
       );
-      this.router.navigate(['']);
+      this.router.navigate(['../'], {
+        relativeTo: this.route
+      });
     }
   }
 
@@ -116,6 +124,10 @@ export class ReceitaFormComponent implements OnInit, OnDestroy {
   removeIngrediente(index: number) {
     (<FormArray>this.form.get('ingredientes'))
       .removeAt(index);
+  }
+
+  onCancel(){
+    this.location.back();
   }
 }
 

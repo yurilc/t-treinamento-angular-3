@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Receita } from '../receita';
 import { ReceitaService } from '../../core/receita.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-receita-list',
@@ -18,7 +18,8 @@ export class ReceitaListComponent implements OnInit, OnDestroy {
   selectedIndex = -1;
   
   constructor(private receitaService: ReceitaService,
-              private router: Router) { }
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.receitas =
@@ -30,11 +31,15 @@ export class ReceitaListComponent implements OnInit, OnDestroy {
   }
 
   onDetailReceita(index: number){
-    this.router.navigate([ index ]);
+    this.router.navigate([ index ], {
+      relativeTo: this.route
+    });
   }
 
   onEditReceita(index: number) {
-    this.router.navigate([ index, 'edit' ]);
+    this.router.navigate([ index, 'edit' ], {
+      relativeTo: this.route
+    });
     // 123/edit
   }
 
