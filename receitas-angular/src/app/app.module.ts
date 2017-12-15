@@ -3,15 +3,16 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { ReceitaResumoComponent } from './receita-resumo/receita-resumo.component';
-import { ReceitaListComponent } from './receita-list/receita-list.component';
-import { ReceitaFormComponent } from './receita-form/receita-form.component';
-import { HighlightDirective } from './highlight.directive';
-import { ClickDirective } from './click.directive';
-import { ReceitaService } from './receita.service';
-import { ResumoPipe } from './resumo.pipe';
-import { DificuldadePipe } from './dificuldade.pipe';
+import { ReceitaResumoComponent } from './receita/receita-resumo/receita-resumo.component';
+import { ReceitaListComponent } from './receita/receita-list/receita-list.component';
+import { ReceitaFormComponent } from './receita/receita-form/receita-form.component';
+import { ReceitaService } from './core/receita.service';
+import { HighlightDirective } from './shared/highlight.directive';
+import { ClickDirective } from './shared/click.directive';
+import { ResumoPipe } from './shared/resumo.pipe';
+import { DificuldadePipe } from './shared/dificuldade.pipe';
 import { AppRoutingModule } from './app-routing.module';
+import { ReceitaDetailComponent } from './receita/receita-detail/receita-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AppRoutingModule } from './app-routing.module';
     HighlightDirective,
     ClickDirective,
     ResumoPipe,
-    DificuldadePipe
+    DificuldadePipe,
+    ReceitaDetailComponent
   ],
   imports: [
     BrowserModule,

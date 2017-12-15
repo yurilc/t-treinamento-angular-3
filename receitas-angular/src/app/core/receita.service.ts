@@ -1,4 +1,4 @@
-import { Receita } from "./receita";
+import { Receita } from "../receita/receita";
 
 export class ReceitaService {
     private receitas: Receita[] = [];

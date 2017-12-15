@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 import { Receita } from '../receita';
-import { ReceitaService } from '../receita.service';
+import { ReceitaService } from '../../core/receita.service';
 
 @Component({
   selector: 'app-receita-form',

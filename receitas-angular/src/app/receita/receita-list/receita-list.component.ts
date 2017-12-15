@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { Receita } from '../receita';
-import { ReceitaService } from '../receita.service';
+import { ReceitaService } from '../../core/receita.service';
 import { Router } from '@angular/router';
 
 @Component({
