@@ -22,6 +22,7 @@ export class IngredienteFormComponent implements OnInit {
               private location: Location) { }
 
   ngOnInit() {
+    console.log("ReceitaFormComponente ngOnInt");
     this.ingrediente = new Ingrediente(null);
     if(this.route.snapshot.params['id']) {
       this.index = this.route.snapshot.params['id'];

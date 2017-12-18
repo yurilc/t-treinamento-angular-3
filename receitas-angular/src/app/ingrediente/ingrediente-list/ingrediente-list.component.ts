@@ -20,7 +20,10 @@ export class IngredienteListComponent implements OnInit {
   ngOnInit() {
     this.ingredientes = this.ingredienteService.getIngredientes();
     this.subscription = this.ingredienteService.subject.subscribe(
-      data => this.ingredientes = data
+      data => {
+        this.ingredientes = data;
+        console.log("ReceitaListComponente escutando subject de ingredientes");
+      }
     );
   }
 

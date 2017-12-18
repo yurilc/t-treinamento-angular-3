@@ -17,11 +17,13 @@ export class IngredienteDetailComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log("ReceitaDetailComponente ngOnInt");
     this.route.params.subscribe((params: Params) => {
       this.ingrediente = this.ingredienteService.getIngrediente(params['id']);
       if(!this.ingrediente.nome) {
         this.router.navigate([ '../' ], { relativeTo: this.route });
       }
+      console.log("ReceitaDetailComponente escutando observable de parametros");
     });
   }
 
