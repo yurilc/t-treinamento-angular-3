@@ -5,9 +5,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { IngredienteListComponent } from './ingrediente/ingrediente-list/ingrediente-list.component';
-import { IngredienteFormComponent } from './ingrediente/ingrediente-form/ingrediente-form.component';
-import { IngredienteDetailComponent } from './ingrediente/ingrediente-detail/ingrediente-detail.component';
 import { AuthGuard } from './core/auth.guard';
 
 const routes: Routes = [
@@ -15,12 +12,9 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'cadastro', component: CadastroComponent },
-    { path: 'ingredientes', component: IngredienteListComponent, children: [
-        { path: 'new', component: IngredienteFormComponent},
-        { path: ':id/edit', component: IngredienteFormComponent},
-        { path: ':id', component: IngredienteDetailComponent}
-    ],
-        canActivateChild: [AuthGuard]
+    { 
+        path: 'ingredientes',
+        loadChildren: './ingrediente/ingrediente.module#IngredienteModule'
     },
     { 
         path: 'receitas',
