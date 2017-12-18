@@ -18,7 +18,8 @@ const routes: Routes = [
     },
     { 
         path: 'receitas',
-        loadChildren: './receita/receita.module#ReceitaModule'
+        loadChildren: './receita/receita.module#ReceitaModule',
+        canLoad: [AuthGuard]
     },
     { path: '**', component: NotFoundComponent }
 ];
