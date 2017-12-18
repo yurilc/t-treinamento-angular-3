@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { MenuComponent } from './menu/menu.component';
 import { IngredienteService } from './core/ingrediente.service';
+import { AuthService } from './core/auth.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { IngredienteService } from './core/ingrediente.service';
   ],
   providers: [
     ReceitaService,
-    IngredienteService
+    IngredienteService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
