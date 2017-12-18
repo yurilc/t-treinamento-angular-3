@@ -18,7 +18,11 @@ export class IngredienteListComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.ingredientes = this.ingredienteService.getIngredientes();
+    this.ingredienteService
+      .getIngredientes()
+      .subscribe((data: Ingrediente[]) => {
+        this.ingredientes = data;
+      });
     this.subscription = this.ingredienteService.subject.subscribe(
       data => {
         this.ingredientes = data;

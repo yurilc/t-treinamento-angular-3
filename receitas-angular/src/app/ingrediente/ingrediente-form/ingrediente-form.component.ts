@@ -23,7 +23,7 @@ export class IngredienteFormComponent implements OnInit {
 
   ngOnInit() {
     console.log("ReceitaFormComponente ngOnInt");
-    this.ingrediente = new Ingrediente(null);
+    this.ingrediente = new Ingrediente(undefined, null);
     if(this.route.snapshot.params['id']) {
       this.index = this.route.snapshot.params['id'];
       this.ingrediente = this.ingredienteService.getIngrediente(this.index);
@@ -37,8 +37,7 @@ export class IngredienteFormComponent implements OnInit {
         .addIngrediente(ingrediente)
         .subscribe(data => {
           console.log('retorno firebase', data);
-          const i = this.ingredienteService.getIngredientes().length -1;
-          this.router.navigate(['../', i], { relativeTo: this.route });
+          this.router.navigate(['../', data['name']], { relativeTo: this.route });
         });
     } else {
       this.ingredienteService.updateIngrediente(this.index, ingrediente);
