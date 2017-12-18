@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -9,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class CadastroComponent implements OnInit {
   form: FormGroup;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -17,6 +18,18 @@ export class CadastroComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form.value);
+    this.authService.cadastrar(
+      this.form.value.email,
+      this.form.value.password
+    ).then(
+      result => {
+        console.log('sucesso', result);
+      }
+    ).catch(
+      error => {
+        console.log('erro', error);
+      }
+    );
   }
 
   private initializeForm() {

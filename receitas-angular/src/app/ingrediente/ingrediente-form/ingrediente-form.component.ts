@@ -33,9 +33,13 @@ export class IngredienteFormComponent implements OnInit {
   onSubmit(form: NgForm) {
     const ingrediente = form.value;
     if(this.index == -1) {
-      this.ingredienteService.addIngrediente(ingrediente);
-      const i = this.ingredienteService.getIngredientes().length -1;
-      this.router.navigate(['../', i], { relativeTo: this.route });
+      this.ingredienteService
+        .addIngrediente(ingrediente)
+        .subscribe(data => {
+          console.log('retorno firebase', data);
+          const i = this.ingredienteService.getIngredientes().length -1;
+          this.router.navigate(['../', i], { relativeTo: this.route });
+        });
     } else {
       this.ingredienteService.updateIngrediente(this.index, ingrediente);
       this.router.navigate(['../'], { relativeTo: this.route });

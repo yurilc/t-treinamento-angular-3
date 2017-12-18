@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
@@ -19,14 +19,17 @@ const routes: Routes = [
     { 
         path: 'receitas',
         loadChildren: './receita/receita.module#ReceitaModule',
-        canLoad: [AuthGuard]
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard]
     },
     { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes, {
+            preloadingStrategy: PreloadAllModules
+        } )
     ],
     exports: [
         RouterModule

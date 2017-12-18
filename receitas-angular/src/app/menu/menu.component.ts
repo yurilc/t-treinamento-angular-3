@@ -13,6 +13,7 @@ export class MenuComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.authService.initialize();
   }
 
   isLoggedIn() {
