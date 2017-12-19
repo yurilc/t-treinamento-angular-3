@@ -63,13 +63,36 @@ export class IngredienteService {
         //this.subject.next(this.getIngredientes());
     }
 
-    updateIngrediente(index: number, ingrediente: Ingrediente){
-        this.ingredientes[index] = ingrediente;
+    updateIngrediente(chave: string, ingrediente: Ingrediente){
+        return this.authService.getToken()
+            .pipe(
+                switchMap(token => {
+                    return this.http.put(
+                        environment.apiURL
+                        + 'ingredientes/' 
+                        + chave + 
+                        '.json?auth=' 
+                        + token,
+                        ingrediente
+                    );
+                })
+            )
         //this.subject.next(this.getIngredientes());
     }
 
-    removeIngrediente(index: number) {
-        this.ingredientes.splice(index, 1);
+    removeIngrediente(chave: string) {
+        return this.authService.getToken()
+        .pipe(
+            switchMap(token => {
+                return this.http.delete(
+                    environment.apiURL
+                    + 'ingredientes/' 
+                    + chave + 
+                    '.json?auth=' 
+                    + token
+                );
+            })
+        );
         //this.subject.next(this.getIngredientes());
     }
 }

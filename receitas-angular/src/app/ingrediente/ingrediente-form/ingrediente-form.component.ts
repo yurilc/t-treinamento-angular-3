@@ -44,8 +44,11 @@ export class IngredienteFormComponent implements OnInit {
           this.router.navigate(['../', data['name']], { relativeTo: this.route });
         });
     } else {
-      //this.ingredienteService.updateIngrediente(this.index, ingrediente);
-      this.router.navigate(['../'], { relativeTo: this.route });
+      this.ingredienteService
+        .updateIngrediente(this.index, ingrediente)
+        .subscribe(()=>{
+          this.router.navigate(['../'], { relativeTo: this.route });
+        });
     }
     form.reset();
   }

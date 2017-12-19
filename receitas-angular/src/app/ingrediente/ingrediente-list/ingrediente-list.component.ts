@@ -31,9 +31,12 @@ export class IngredienteListComponent implements OnInit {
     );
   }
 
-  onDelete(index: number) {
-    this.ingredienteService.removeIngrediente(index);
-    this.router.navigate([ "./" ], { relativeTo: this.route });
+  onDelete(index: string) {
+    this.ingredienteService
+      .removeIngrediente(index)
+      .subscribe(()=>{
+        this.router.navigate([ "./" ], { relativeTo: this.route });
+      });
   }
 
 }
