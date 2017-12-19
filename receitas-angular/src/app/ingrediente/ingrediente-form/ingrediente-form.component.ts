@@ -12,7 +12,7 @@ import { IngredienteService } from '../../core/ingrediente.service';
   styleUrls: ['./ingrediente-form.component.css']
 })
 export class IngredienteFormComponent implements OnInit {
-  index = -1;
+  index: string;
   ingrediente: Ingrediente;
 
 
@@ -26,13 +26,17 @@ export class IngredienteFormComponent implements OnInit {
     this.ingrediente = new Ingrediente(undefined, null);
     if(this.route.snapshot.params['id']) {
       this.index = this.route.snapshot.params['id'];
-      this.ingrediente = this.ingredienteService.getIngrediente(this.index);
+      this.ingredienteService
+        .getIngrediente(this.index)
+        .subscribe((ingrediente: Ingrediente)=>{
+          this.ingrediente = ingrediente;
+        });
     }
   }
 
   onSubmit(form: NgForm) {
     const ingrediente = form.value;
-    if(this.index == -1) {
+    if(this.index == undefined) {
       this.ingredienteService
         .addIngrediente(ingrediente)
         .subscribe(data => {
@@ -40,7 +44,7 @@ export class IngredienteFormComponent implements OnInit {
           this.router.navigate(['../', data['name']], { relativeTo: this.route });
         });
     } else {
-      this.ingredienteService.updateIngrediente(this.index, ingrediente);
+      //this.ingredienteService.updateIngrediente(this.index, ingrediente);
       this.router.navigate(['../'], { relativeTo: this.route });
     }
     form.reset();

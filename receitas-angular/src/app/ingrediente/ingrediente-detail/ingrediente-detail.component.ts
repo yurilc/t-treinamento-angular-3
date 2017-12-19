@@ -10,7 +10,7 @@ import { Ingrediente } from '../ingrediente';
   styleUrls: ['./ingrediente-detail.component.css']
 })
 export class IngredienteDetailComponent implements OnInit {
-  ingrediente: Ingrediente;
+  ingrediente = new Ingrediente(null, null);
 
   constructor(private ingredienteService: IngredienteService,
               private router: Router,
@@ -19,10 +19,14 @@ export class IngredienteDetailComponent implements OnInit {
   ngOnInit() {
     console.log("ReceitaDetailComponente ngOnInt");
     this.route.params.subscribe((params: Params) => {
-      this.ingrediente = this.ingredienteService.getIngrediente(params['id']);
-      if(!this.ingrediente.nome) {
-        this.router.navigate([ '../' ], { relativeTo: this.route });
-      }
+      this.ingredienteService
+        .getIngrediente(params['id'])
+        .subscribe((ingrediente: Ingrediente) => {
+          this.ingrediente = ingrediente;
+          if(!this.ingrediente.nome) {
+            this.router.navigate([ '../' ], { relativeTo: this.route });
+          }
+        });
       console.log("ReceitaDetailComponente escutando observable de parametros");
     });
   }

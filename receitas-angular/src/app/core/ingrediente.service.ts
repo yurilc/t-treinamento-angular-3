@@ -36,8 +36,19 @@ export class IngredienteService {
             );
     }
 
-    getIngrediente(index: number) {
-        return { ...this.ingredientes[index] };
+    getIngrediente(chave: string) {
+        return this.authService.getToken()
+            .pipe(
+                switchMap(token => {
+                    return this.http.get<Ingrediente>(
+                        environment.apiURL
+                        + 'ingredientes/' 
+                        + chave + 
+                        '.json?auth=' 
+                        + token
+                    );
+                })
+            );
     }
 
     addIngrediente(ingrediente: Ingrediente) {
