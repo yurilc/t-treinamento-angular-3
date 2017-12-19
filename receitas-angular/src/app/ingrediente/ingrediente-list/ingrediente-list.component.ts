@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -10,7 +10,7 @@ import { Ingrediente } from '../ingrediente';
   templateUrl: './ingrediente-list.component.html',
   styleUrls: ['./ingrediente-list.component.css']
 })
-export class IngredienteListComponent implements OnInit {
+export class IngredienteListComponent implements OnInit, OnDestroy {
   ingredientes: Ingrediente[];
   subscription: Subscription;
   constructor(private ingredienteService: IngredienteService,
@@ -18,15 +18,35 @@ export class IngredienteListComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.ingredienteService
-      .getIngredientes()
-      .subscribe((data: Ingrediente[]) => {
-        this.ingredientes = data;
-      });
-    this.subscription = this.ingredienteService.subject.subscribe(
-      data => {
-        this.ingredientes = data;
+    this.list();
+    this.subscription = 
+      this.ingredienteService
+        .subject
+        .subscribe(
+      () => {
+        this.list();
         console.log("ReceitaListComponente escutando subject de ingredientes");
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  private list() {
+    this.ingredienteService
+    .getIngredientes()
+    .subscribe(
+      (data: Ingrediente[]) => {
+        console.log('consulta com sucesso');
+        this.ingredientes = data;
+      },
+      (erro) => {
+        console.log('consulta com erro', erro);
+      },
+      () => {
+        console.log('consulta concluída');
       }
     );
   }

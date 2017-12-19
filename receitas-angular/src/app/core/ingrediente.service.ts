@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { HttpClient } from '@angular/common/http';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, tap } from 'rxjs/operators';
 
 import { Ingrediente } from "../ingrediente/ingrediente";
 import { environment } from '../../environments/environment';
@@ -9,8 +9,7 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class IngredienteService {
-    private ingredientes: Ingrediente[] = [];
-    subject = new Subject<Ingrediente[]>();
+    subject = new Subject<void>();
 
     constructor(private http: HttpClient,
                 private authService: AuthService) {}
@@ -58,9 +57,12 @@ export class IngredienteService {
                     return this.http.post(
                         environment.apiURL + 'ingredientes.json?auth='+token,
                         ingrediente
-                );
-            }));
-        //this.subject.next(this.getIngredientes());
+                    ).pipe(
+                        tap(()=> {
+                            this.subject.next();
+                        })
+                    );
+                }));
     }
 
     updateIngrediente(chave: string, ingrediente: Ingrediente){
@@ -74,6 +76,10 @@ export class IngredienteService {
                         '.json?auth=' 
                         + token,
                         ingrediente
+                    ).pipe(
+                        tap(()=> {
+                            this.subject.next();
+                        })
                     );
                 })
             )
@@ -90,6 +96,10 @@ export class IngredienteService {
                     + chave + 
                     '.json?auth=' 
                     + token
+                ).pipe(
+                    tap(()=> {
+                        this.subject.next();
+                    })
                 );
             })
         );
